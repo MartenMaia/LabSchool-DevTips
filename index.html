@@ -14,6 +14,7 @@
             <div class="logo">
                 <img src=".\img\logodevtips.png" alt="" srcset="">
             </div>
+            <!-- Formulario de pesquisa-->
             <form onsubmit="return false">
                 <div class="input">
                     <label for="titulo">Titulo*:</label>
@@ -41,6 +42,7 @@
                     <label for="youtube">Vídeo do YouTube:</label>
                     <input type="url" name="youtube" id="youtube">
                 </div>
+                <!-- Botões de envio do formulario -->
                 <div class="botoes">
                     <button onclick="Submit(this.form)" type="submit button">Salvar</button>
                     <button type="reset">Limpar</button>
@@ -79,6 +81,8 @@
                     <div class="dado"></div>
                 </div>
             </div>
+
+            <!--Motor de pesquisa da aba direita-->
             <div class="pesquisa">
                 <input type="text" placeholder="O que buscas?">
                 <div>
@@ -92,68 +96,8 @@
                 </div>
             </div>
             <div class="caixa">
-                <ul>
-                    <li class="card">
-                        <div class="cardCat">
-                            <div>Categoria</div>
-                            <button onclick="Deletar()"><i class="fa-solid fa-trash-can"></i></button>
-                        </div>
-                        <div class="cardTitulo">
-                            <h2>titulo</h2>
-                            <div>Linguagem</div>
-                        </div>
-                        <div class="cardDesc">Descrição</div>
-                        <div>
-                            <button onclick="Editar()"><i class="fa-solid fa-pen"></i></button>
-                            <a href="https://www.youtube.com/watch?v=vFTfYFPvH1Q" target="_blank"><i class="fa-brands fa-youtube"></i></a>
-                        </div>
-                    </li>
-                    <li class="card">
-                        <div class="cardCat">
-                            <div>Categoria</div>
-                            <button onclick="Deletar()"><i class="fa-solid fa-trash-can"></i></button>
-                        </div>
-                        <div class="cardTitulo">
-                            <h2>titulo</h2>
-                            <div>Linguagem</div>
-                        </div>
-                        <div class="cardDesc">Descrição</div>
-                        <div>
-                            <button onclick="Editar()"><i class="fa-solid fa-pen"></i></button>
-                            <button onclick="Visualizar()"><i class="fa-brands fa-youtube"></i></button>
-                        </div>
-                    </li>
-                    <li class="card">
-                        <div class="cardCat">
-                            <div>Categoria</div>
-                            <button onclick="Deletar()"><i class="fa-solid fa-trash-can"></i></button>
-                        </div>
-                        <div class="cardTitulo">
-                            <h2>titulo</h2>
-                            <div>Linguagem</div>
-                        </div>
-                        <div class="cardDesc">Descrição</div>
-                        <div>
-                            <button onclick="Editar()"><i class="fa-solid fa-pen"></i></button>
-                            <button onclick="Visualizar()"><i class="fa-brands fa-youtube"></i></button>
-                        </div>
-                    </li>
-                    <li class="card">
-                        <div class="cardCat">
-                            <div>Categoria</div>
-                            <button onclick="Deletar()"><i class="fa-solid fa-trash-can"></i></button>
-                        </div>
-                        <div class="cardTitulo">
-                            <h2>titulo</h2>
-                            <div>Linguagem</div>
-                        </div>
-                        <div class="cardDesc">Descrição</div>
-                        <div>
-                            <button onclick="Editar()"><i class="fa-solid fa-pen"></i></button>
-                            <button onclick="Visualizar()"><i class="fa-brands fa-youtube"></i></button>
-                        </div>
-                    </li>
-                </div>
+                <!-- Listagem de dicas adicionadas na Pagina -->
+                <ul></ul>
             </div>
             
         </div>

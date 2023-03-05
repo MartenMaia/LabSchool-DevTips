@@ -1,5 +1,8 @@
+// A Classe card serve para a verifiação e salvamento das Dicas no localStorage - Construtor e função salvar()
+// Tambem é utilizada para a criação de innerHTML dos card, que são adicionados na listagem <ul> - Função criarCard()
 class Card {
     constructor(id,categoria,titulo,skill,descricao,youtube){
+        //Aqui são tradas umas exceções do locasStorage caso o mesmo esteja vazio ou com um elemento invalido.
         if((localStorage.repositorio == "" || localStorage.repositorio == undefined) && id == undefined){
             this.id = 1;
         }else{
@@ -17,6 +20,7 @@ class Card {
         this.youtube = youtube;
     }
 
+    //Aqui é feito o salvamento do card na base de dados
     salvar(){
         let base = this.id == 1 ? [] : JSON.parse(localStorage.repositorio);
         let novoCard = {
@@ -33,6 +37,8 @@ class Card {
         return novoCard;
     }
 
+    //Esta função é responavel por forma um card paramerizado em HTML
+    //A inserção do elemento no HTML é feito na função "carregarBase" dentro do loop de verificação da base de dados.
     criarCard(id,categoria,titulo,skill,descricao,youtube){
         if(id != null){
             this.id = id;
@@ -75,6 +81,7 @@ class Card {
     }
 }
 
+// A Class Dash é responsavel por carregar e atualizar os dados do dashboard da aplicação, sincronizando após verificação!
 class Dash{
     constructor(){
         this.total();
@@ -163,6 +170,7 @@ class Dash{
     }
 }
 
+//Função responsavel por deletar o card selecionado e atualizar a base de dados de acordo.
 function Deletar(id){
     let confirmar = confirm("Voce realmente deseja deletar este item?")
     if(!confirmar){
@@ -171,6 +179,8 @@ function Deletar(id){
     let base = JSON.parse(localStorage.repositorio);
     let nvBase = [];
 
+    //Aqui é criada uma nova lista, e caso o item com id for encontrado, o mesmo não é adicionado à lista
+    //Ficando de fora no salvamento no Storage posteriormente
     for (let index = 0; index < base.length; index++) {
         if(base != null && base[index]['id'] == id){
             continue
@@ -195,6 +205,7 @@ function Submit(form){
     let categoria = form.categoria.value == "" ? validacao = false : form.categoria.value;
     let descricao = form.descricao.value == "" ? validacao = false : form.descricao.value;
 
+    //Validação da URL do youtube, caso não seja uma URL valida, a entrada será recusada.
     if(form.youtube.value != ""){
         try{
             let validarURL = new URL(form.youtube.value);
@@ -224,6 +235,7 @@ function Submit(form){
     return form.reset();
 }
 
+//Função responsavel pela edição das descrições das dicas!
 function Editar(id){
     //Confirmação de edição
     let confirmar = confirm('Voce confirma que gostaria de editar esta dica?');
@@ -234,6 +246,8 @@ function Editar(id){
     let base = JSON.parse(localStorage.repositorio);
     let nvBase = [];
 
+    //Aqui é feita a verificação da base à procura da Dica com ID selecinada
+    //Após encontrado, é feita a substituição via Prompt, passando a descrição antiga como referencia.
     for (let index = 0; index < base.length; index++) {
         if(base != null && base[index]['id'] == id){
             let novaDescricao = base[index]
@@ -251,11 +265,15 @@ function Editar(id){
     return nvBase;
 }
 
+//Motor que limpa o imput de busca e recarrega a base de acordo
 function limparPesquisa(){
     document.querySelector(".pesquisa input").value = "";
     carregarBase(false);
 }
 
+//Função responsavel pelo carregamento dos cards para a visão do usuario
+//É passado um parametro bolleano (true ou false)
+//Caso true, é porque há um input de busca, e apartir dele é feita uma busca na base para a exibição de acordo
 async function carregarBase(boollean){
     try{
         let busca = boollean ? document.querySelector(".pesquisa input").value : "";
@@ -270,6 +288,7 @@ async function carregarBase(boollean){
 
         let verificador;
     
+        //Loop de verificação das keys de acordo com o input enviado
         for (let index = 0; index < base.length; index++) {
             const card = base[index];
             if(card != null){
@@ -283,6 +302,7 @@ async function carregarBase(boollean){
                         }
                     }
                 }
+                //Responsavel por carregar os card (li) no elemento (ul) da pagina.
                 if(verificador == undefined || verificador == true){
                     let entrada = new Card(card.id,card.categoria,card.titulo,card.skill,card.descricao,card.youtube);
                     query.appendChild(entrada.criarCard())
@@ -298,6 +318,8 @@ async function carregarBase(boollean){
 
 }
 
+//Inicialização do sistema
+//Para comecar a visuação a WEB, é feito o carregamento do DASH (Class Dash) e o carregamento da base (carregarBase(false) - sem parametro de pesquisa)
+//Assim o usuario tem uma visão do dashboard e das dicas cadastradas assim que entrada na pagina!
 new Dash;
-
 carregarBase(false);
