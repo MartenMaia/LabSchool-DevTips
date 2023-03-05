@@ -1,0 +1,264 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+:root {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+body.coluna {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+body.coluna .esquerda {
+  display: flex;
+  min-width: 500px;
+  width: 500px;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to right, rgb(226, 226, 226) 0%, rgb(219, 219, 219) 70%, rgb(209, 209, 209) 95%, rgb(254, 254, 254) 100%);
+}
+body.coluna .esquerda > div {
+  display: flex;
+  flex-direction: column;
+  height: 95%;
+  width: 90%;
+  background-color: white;
+  border-radius: 20px;
+  border: 2px grey solid;
+  box-shadow: 3px 3px 10px 2px rgba(0, 0, 0, 0.74);
+}
+body.coluna .esquerda > div > div {
+  justify-content: center;
+  display: flex;
+  width: 100%;
+}
+body.coluna .esquerda > div > div > img {
+  padding-top: 30px;
+  padding-bottom: 20px;
+  height: 150px;
+}
+body.coluna .direita {
+  display: flex;
+  width: 100cqw;
+  background: white;
+  justify-content: center;
+  align-items: center;
+}
+body.coluna .direita > div {
+  display: flex;
+  flex-direction: column;
+  height: 95%;
+  background-color: #ffd633;
+  min-width: 400px;
+  width: 90%;
+  border-radius: 20px;
+  border: 2px grey solid;
+  box-shadow: 13px 7px 15px 2px rgba(0, 0, 0, 0.74);
+}
+body.coluna .direita > div .dash {
+  margin-top: 5px;
+  display: flex;
+  height: 40px;
+  align-self: center;
+  font-weight: 600;
+}
+body.coluna .direita > div .dashboard {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+  padding-top: 0px;
+  padding-bottom: 20px;
+}
+body.coluna .direita > div .dashboard > div {
+  background-color: whitesmoke;
+  height: 90px;
+  min-width: 70px;
+  width: 15%;
+  border-radius: 5px;
+  border: 2px solid #e6b800;
+}
+body.coluna .direita > div .dashboard > div .titulo {
+  font-size: small;
+  text-align: center;
+  font-weight: 500;
+  overflow: hidden;
+}
+body.coluna .direita > div .dashboard > div .dado {
+  display: flex;
+  height: 80%;
+  font-size: xx-large;
+  font-weight: 500;
+  align-items: center;
+  justify-content: center;
+}
+body.coluna .direita > div .pesquisa {
+  width: 100%;
+  height: 25px;
+  align-self: center;
+  display: flex;
+  justify-content: center;
+}
+body.coluna .direita > div .pesquisa input {
+  width: 250px;
+  border-radius: 5px;
+}
+body.coluna .direita > div .pesquisa > div {
+  width: auto;
+  display: flex;
+  justify-content: space-around;
+}
+body.coluna .direita > div .pesquisa > div button {
+  margin-left: 5px;
+  font-size: xx-small;
+  font-weight: 700;
+  border-radius: 5px;
+  width: auto;
+}
+
+.aviso {
+  height: 100vh;
+  display: flex;
+  align-items: end;
+  padding-bottom: 30px;
+  font-weight: 600;
+}
+.aviso p {
+  color: black;
+}
+
+.caixa {
+  display: flex;
+  height: 100%;
+  padding: 20px 25px 20px 25px;
+  overflow: hidden;
+}
+.caixa > ul {
+  display: grid;
+  grid-auto-rows: auto;
+  justify-items: center;
+  height: 100%;
+  width: 100%;
+  background-color: whitesmoke;
+  border: 2px solid #e6b900;
+  border-radius: 3px;
+  box-shadow: 0px 3px 8px 0px rgba(0, 0, 0, 0.74);
+  overflow-y: scroll;
+}
+@media (max-width: 1200px) {
+  .caixa > ul {
+    flex-wrap: wrap;
+    grid-template-columns: 1fr;
+  }
+}
+@media (min-width: 1201px) {
+  .caixa > ul {
+    grid-template-columns: 1fr 1fr;
+    align-content: flex-start;
+  }
+}
+.caixa > ul .card {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 95%;
+  height: max-content;
+  margin-top: 10px;
+  background-color: #FEFFEA;
+  border: 2px solid black;
+  border-radius: 8px;
+  box-shadow: 0px 3px 8px 0px rgba(0, 0, 0, 0.74);
+}
+.caixa > ul .card > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 3px 5px 3px 5px;
+  padding: 2px;
+  border: 1px solid gray;
+  border-radius: 6px;
+  width: auto;
+}
+.caixa > ul .card > div > div {
+  display: flex;
+}
+.caixa > ul .card > div > div > button, .caixa > ul .card > div > div > a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  float: right;
+  width: 30px;
+  height: 30px;
+  border: 0px;
+  background-color: #FEFFEA;
+}
+.caixa > ul .card .cardDesc {
+  min-height: 80px;
+  height: fit-content;
+}
+
+.input {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.input > label {
+  align-self: flex-start;
+  padding: 15px 0px 5px 25px;
+  font-weight: 600;
+}
+
+input, select, textarea {
+  border-radius: 5px;
+  width: 90%;
+  height: 25px;
+  border: 2px solid;
+}
+
+textarea {
+  overflow-y: auto;
+  height: 200px;
+}
+
+button, a, #botao {
+  height: 30px;
+  cursor: pointer;
+}
+
+.botoes {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  padding: 30px 90px 0px 90px;
+  justify-content: space-between;
+}
+.botoes button, .botoes #botao, .botoes a {
+  width: 120px;
+  height: 25px;
+  cursor: pointer;
+  border-radius: 3px;
+  border: 1px solid;
+}
+
+/*# sourceMappingURL=style.css.map */

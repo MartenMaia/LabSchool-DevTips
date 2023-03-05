@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LabSchool - DevTips</title>
+    <link rel="icon" type="image/png" sizes="32x32" href=".\icon\favicon-32x32.png">
+</head>
+<body class="coluna">
+    <!-- Logo + Sistema de cadastro de Dicas -->
+    <div class="esquerda">
+        <div>
+            <div class="logo">
+                <img src=".\img\logodevtips.png" alt="" srcset="">
+            </div>
+            <form onsubmit="return false">
+                <div class="input">
+                    <label for="titulo">Titulo*:</label>
+                    <input type="text" name="titulo" id="titulo" min="5" maxlength="50" required>
+                </div>
+                <div class="input">
+                    <label for="skill">Linguagem/Skill*:</label>
+                    <input type="text" name="skill" id="skill" min="2" maxlength="20" required>
+                </div>
+                <div class="input">
+                    <label for="categoria">Categoria*:</label>
+                    <select name="categoria" id="categoria" required>
+                        <option disabled selected value style="display: none"></option>
+                        <option value="Front-End">FrontEnd</option>
+                        <option value="Back-End">BackEnd</option>
+                        <option value="FullStack">FullStack</option>
+                        <option value="Life-Style">Life Style</option>
+                    </select>
+                </div>
+                <div class="input">
+                    <label for="descricao">Descrição*:</label>
+                    <textarea name="descricao" id="descricao" min="10" maxlength="600" required></textarea>
+                </div>
+                <div class="input">
+                    <label for="youtube">Vídeo do YouTube:</label>
+                    <input type="url" name="youtube" id="youtube">
+                </div>
+                <div class="botoes">
+                    <button onclick="Submit(this.form)" type="button submit">Salvar</button>
+                    <button type="reset">Limpar</button>
+                </div>
+            </form>
+            <div class="aviso">
+                <p>* Requisito obrigatorio</p>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Dashboard + Dicas-->
+    <div class="direita">
+        <div>
+            <div class="dash">INFORMAÇÕES SOBRE O DEVTIPS:</div>
+            <div class="dashboard">
+                <div class="total">
+                    <div class="titulo">TOTAL</div>
+                    <div class="dado"></div>
+                </div>
+                <div class="FrontEnd">
+                    <div class="titulo">Front-End</div>
+                    <div class="dado"></div>
+                </div>
+                <div class="backend">
+                    <div class="titulo">Back-End</div>
+                    <div class="dado"></div>
+                </div>
+                <div class="fullstack">
+                    <div class="titulo">Fullstack</div>
+                    <div class="dado"></div>
+                </div>
+                <div class="comportamental">
+                    <div class="titulo">Life Style</div>
+                    <div class="dado"></div>
+                </div>
+            </div>
+            <div class="pesquisa">
+                <input type="text" placeholder="O que buscas?">
+                <div>
+                    <button class="botaoPesq" onclick="carregarBase(true)">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        PESQUISAR
+                    </button>
+                    <button class="botaoDel" onclick="carregarBase(false)">
+                        <i class="fa-solid fa-circle-xmark"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="caixa">
+                <ul>
+                    <li class="card">
+                        <div class="cardCat">
+                            <div>Categoria</div>
+                            <button onclick="Deletar()"><i class="fa-solid fa-trash-can"></i></button>
+                        </div>
+                        <div class="cardTitulo">
+                            <h2>titulo</h2>
+                            <div>Linguagem</div>
+                        </div>
+                        <div class="cardDesc">Descrição</div>
+                        <div>
+                            <button onclick="Editar()"><i class="fa-solid fa-pen"></i></button>
+                            <a href="https://www.youtube.com/watch?v=vFTfYFPvH1Q" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+                        </div>
+                    </li>
+                    <li class="card">
+                        <div class="cardCat">
+                            <div>Categoria</div>
+                            <button onclick="Deletar()"><i class="fa-solid fa-trash-can"></i></button>
+                        </div>
+                        <div class="cardTitulo">
+                            <h2>titulo</h2>
+                            <div>Linguagem</div>
+                        </div>
+                        <div class="cardDesc">Descrição</div>
+                        <div>
+                            <button onclick="Editar()"><i class="fa-solid fa-pen"></i></button>
+                            <button onclick="Visualizar()"><i class="fa-brands fa-youtube"></i></button>
+                        </div>
+                    </li>
+                    <li class="card">
+                        <div class="cardCat">
+                            <div>Categoria</div>
+                            <button onclick="Deletar()"><i class="fa-solid fa-trash-can"></i></button>
+                        </div>
+                        <div class="cardTitulo">
+                            <h2>titulo</h2>
+                            <div>Linguagem</div>
+                        </div>
+                        <div class="cardDesc">Descrição</div>
+                        <div>
+                            <button onclick="Editar()"><i class="fa-solid fa-pen"></i></button>
+                            <button onclick="Visualizar()"><i class="fa-brands fa-youtube"></i></button>
+                        </div>
+                    </li>
+                    <li class="card">
+                        <div class="cardCat">
+                            <div>Categoria</div>
+                            <button onclick="Deletar()"><i class="fa-solid fa-trash-can"></i></button>
+                        </div>
+                        <div class="cardTitulo">
+                            <h2>titulo</h2>
+                            <div>Linguagem</div>
+                        </div>
+                        <div class="cardDesc">Descrição</div>
+                        <div>
+                            <button onclick="Editar()"><i class="fa-solid fa-pen"></i></button>
+                            <button onclick="Visualizar()"><i class="fa-brands fa-youtube"></i></button>
+                        </div>
+                    </li>
+                </div>
+            </div>
+            
+        </div>
+    </div>   
+    <link rel="stylesheet" href="style.css"> 
+    <script src="devTips.js"></script>
+    <script src="https://kit.fontawesome.com/c11e56c040.js" crossorigin="anonymous"></script>
+</body>
+</html>
