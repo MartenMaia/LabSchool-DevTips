@@ -29,6 +29,7 @@ class Card {
         }
         base.push(novoCard);
         localStorage.repositorio = JSON.stringify(base);
+        alert('Dica salva com sucesso!')
         return novoCard;
     }
 
@@ -72,42 +73,6 @@ class Card {
         cartao.appendChild(cardDesc);
         return cartao;
     }
-}
-
-function Deletar(id){
-    let base = JSON.parse(localStorage.repositorio);
-    let nvBase = [];
-
-    for (let index = 0; index < base.length; index++) {
-        if(base != null && base[index]['id'] == id){
-            continue
-        }
-        nvBase.push(base[index])
-    }
-
-    localStorage.repositorio = JSON.stringify(nvBase);
-    carregarBase(false)
-    new Dash;
-
-    return nvBase;
-}
-
-function Submit(form){
-    let titulo = form.titulo.value;
-    let skill = form.skill.value;
-    let categoria = form.categoria.value;
-    let descricao = form.descricao.value;
-    let youtube = form.youtube.value;
-
-    let novoCard = new Card(undefined,categoria,titulo, skill, descricao, youtube);
-    novoCard.salvar();
-    console.log('Card:',novoCard);
-    console.log('localStorage',localStorage.repositorio);
-
-    new Dash;
-    carregarBase(false)
-
-    return novoCard;
 }
 
 class Dash{
@@ -198,9 +163,100 @@ class Dash{
     }
 }
 
+function Deletar(id){
+    let confirmar = confirm("Voce realmente deseja deletar este item?")
+    if(!confirmar){
+        return false;
+    }
+    let base = JSON.parse(localStorage.repositorio);
+    let nvBase = [];
+
+    for (let index = 0; index < base.length; index++) {
+        if(base != null && base[index]['id'] == id){
+            continue
+        }
+        nvBase.push(base[index])
+    }
+
+    localStorage.repositorio = JSON.stringify(nvBase);
+    carregarBase(false)
+    alert('Dica deletado com sucesso!')
+    new Dash;
+
+    return nvBase;
+}
+
+function Submit(form){
+    //VALIDAÇÃO DAS ENTRADAS E DA URL DO YOUTUBE
+    let validacao = true;
+
+    let titulo = form.titulo.value == "" ? validacao = false : form.titulo.value;
+    let skill = form.skill.value == "" ? validacao = false : form.skill.value;
+    let categoria = form.categoria.value == "" ? validacao = false : form.categoria.value;
+    let descricao = form.descricao.value == "" ? validacao = false : form.descricao.value;
+
+    if(form.youtube.value != ""){
+        try{
+            let validarURL = new URL(form.youtube.value);
+        } catch {
+            validacao = false
+        }
+    }
+    let youtube = form.youtube.value;
+
+    if(validacao == false) return alert("DADOS INVALIDOS!");
+
+    //CONFIRMAÇÃO DE ENTRADA
+    let confirmar = confirm('Deseja confirma o envio desta dica?');
+    if(!confirmar){
+        return false
+    }
+
+    //CRIAÇÃO DO CARD E SALVAMENTO NO LOCALsTORAGE
+    let novoCard = new Card(undefined,categoria,titulo, skill, descricao, youtube);
+    novoCard.salvar();
+
+    //Atualização do Dash e dos Card
+    new Dash;
+    carregarBase(false)
+
+    //Limpeza do forms
+    return form.reset();
+}
+
+function Editar(id){
+    //Confirmação de edição
+    let confirmar = confirm('Voce confirma que gostaria de editar esta dica?');
+    if(!confirmar){
+        return false
+    }
+
+    let base = JSON.parse(localStorage.repositorio);
+    let nvBase = [];
+
+    for (let index = 0; index < base.length; index++) {
+        if(base != null && base[index]['id'] == id){
+            let novaDescricao = base[index]
+            novaDescricao['descricao'] = prompt('Digite a nova dica:',base[index]['descricao'])
+            nvBase.push(novaDescricao)
+            continue
+        }
+        nvBase.push(base[index])
+    }
+
+    localStorage.repositorio = JSON.stringify(nvBase);
+    carregarBase(false)
+    alert('Dica editada com sucesso!')
+
+    return nvBase;
+}
+
+function limparPesquisa(){
+    document.querySelector(".pesquisa input").value = "";
+    carregarBase(false);
+}
+
 async function carregarBase(boollean){
-
-
     try{
         let busca = boollean ? document.querySelector(".pesquisa input").value : "";
         let query = document.querySelector(".caixa ul");
