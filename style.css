@@ -167,12 +167,14 @@ body.coluna .direita > div .pesquisa > div button {
 @media (max-width: 1200px) {
   .caixa > ul {
     flex-wrap: wrap;
-    grid-template-columns: 1fr;
+    -ms-grid-column-align: start;
+    grid-template-columns: 100%;
   }
 }
 @media (min-width: 1201px) {
   .caixa > ul {
-    grid-template-columns: 1fr 1fr;
+    -ms-grid-column-align: start;
+    grid-template-columns: 50% 50%;
     align-content: flex-start;
   }
 }
@@ -188,14 +190,29 @@ body.coluna .direita > div .pesquisa > div button {
   border-radius: 8px;
   box-shadow: 0px 3px 8px 0px rgba(0, 0, 0, 0.74);
 }
+.caixa > ul .card .cardTitulo {
+  justify-content: space-around;
+  font-weight: 500;
+}
+.caixa > ul .card .cardTitulo span {
+  font-size: xx-small;
+  align-self: center;
+}
+.caixa > ul .card .cardDesc {
+  max-width: 100%;
+  align-items: start;
+  justify-content: start;
+  border: 2px solid gainsboro;
+  border-radius: 2px;
+}
 .caixa > ul .card > div {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin: 3px 5px 3px 5px;
   padding: 2px;
-  border: 1px solid gray;
-  border-radius: 6px;
+  border-bottom: 2px solid gainsboro;
+  border-radius: 0px;
   width: auto;
 }
 .caixa > ul .card > div > div {
@@ -210,11 +227,15 @@ body.coluna .direita > div .pesquisa > div button {
   width: 30px;
   height: 30px;
   border: 0px;
+  color: black;
   background-color: #FEFFEA;
 }
 .caixa > ul .card .cardDesc {
-  min-height: 80px;
+  display: block;
+  width: auto;
+  min-height: 40px;
   height: fit-content;
+  word-wrap: break-word !important;
 }
 
 .input {
@@ -259,6 +280,11 @@ button, a, #botao {
   cursor: pointer;
   border-radius: 3px;
   border: 1px solid;
+}
+
+.cardCat {
+  font-weight: 700;
+  border: 0px solid black;
 }
 
 /*# sourceMappingURL=style.css.map */

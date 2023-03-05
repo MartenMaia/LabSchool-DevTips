@@ -176,10 +176,12 @@ body.coluna {
 
         @media (max-width: 1200px) {
             flex-wrap: wrap; 
-            grid-template-columns: 1fr;
+            -ms-grid-column-align: start;
+            grid-template-columns: 100%;
         }
         @media (min-width: 1201px) {
-            grid-template-columns: 1fr 1fr;
+            -ms-grid-column-align: start;
+            grid-template-columns: 50% 50%;
             align-content: flex-start;
         }
 
@@ -197,14 +199,29 @@ body.coluna {
             border: 2px solid black;
             border-radius: 8px;
             box-shadow: 0px 3px 8px 0px rgba(0,0,0,0.74);
+            .cardTitulo{
+                justify-content: space-around;
+                font-weight: 500;
+                span{
+                    font-size: xx-small;
+                    align-self: center;
+                }
+            }
+            .cardDesc{
+                max-width: 100%;
+                align-items: start;
+                justify-content: start;
+                border: 2px solid gainsboro;
+                border-radius: 2px;
+            }
             > div{
                 display: flex;
                 align-items: center;
                 justify-content:space-between;
                 margin: 3px 5px 3px 5px;
                 padding: 2px;
-                border: 1px solid gray;
-                border-radius: 6px;
+                border-bottom: 2px solid gainsboro;
+                border-radius: 0px;
                 width: auto;
                 >div{
                     display: flex;
@@ -219,6 +236,7 @@ body.coluna {
                         height: 30px;
                         border: 0px;
                         
+                        color: black;
                         background-color: #FEFFEA;
 
                 
@@ -226,8 +244,11 @@ body.coluna {
                 }
             }
             .cardDesc{
-                min-height: 80px;
+                display: block;
+                width: auto;
+                min-height: 40px;
                 height: fit-content;
+                word-wrap: break-word !important;
             }
         }
     }
@@ -275,4 +296,9 @@ button, a, #botao{
         border-radius: 3px;
         border: 1px solid;
     }
+}
+
+.cardCat{
+    font-weight: 700;
+    border: 0px solid black;
 }

@@ -61,7 +61,7 @@ class Card {
         cardTitulo.classList.add('cardTitulo');
         cardTitulo.innerHTML = `
         <h2>${this.titulo}</h2>
-        <div>${this.skill}</div>
+        <div><span>Skill:</span> &nbsp${this.skill}</div>
         `
 
         let cardDesc = document.createElement('div');
